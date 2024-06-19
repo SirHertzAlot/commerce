@@ -1,10 +1,20 @@
+from datetime import datetime
+from django import forms
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User
+from .models import User, Bid, Listing, Comments
+
+class CreateListingForm(forms.Form):
+    listing_name = forms.CharField(label="Listing Product", max_length=90, required=True)
+    listing_description = forms.Textarea()
+    listing_category = forms.CharField(label="Listing Category", max_length=90, required=True)
+    listing_status = forms.CharField(initial="Active", disabled=True)
+    listing_start_time = forms.DateTimeField(initial=datetime.now())
+    listing_duration = forms.TimeField(label="Duration of Listing", required=True, disabled=True)
 
 
 def index(request):
@@ -61,3 +71,20 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "auctions/register.html")
+
+#Create listing view to display proper information.
+def create_listing(request):
+    if request.method == "GET":
+        return render(request, "auctions/createListing.html", {
+            "createListingForm": CreateListingForm()
+        })
+    if request.method == "POST":
+        form = CreateListingForm(request.POST)
+        listing = {}
+        if form.is_valid():
+            
+            #Save valid listing request
+            Listing.save(form.cleaned_data)
+
+            # Redirect user to list of entries
+            return HttpResponseRedirect(reverse("index"))

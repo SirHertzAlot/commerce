@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'auction:createListing' %}">Create a new listing</a>
+                </li>
             {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">Log In</a>
@@ -36,5 +39,6 @@
         <hr>
         {% block body %}
         {% endblock %}
+        <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
