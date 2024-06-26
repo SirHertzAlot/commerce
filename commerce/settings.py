@@ -27,11 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
-
-FIXTURE_DIRS = [
-    '/fixtures'
-]
-
 # Application definition
 
 INSTALLED_APPS = [
