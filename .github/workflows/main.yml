@@ -1,4 +1,4 @@
-            - name: Analyze Code Security
+ name: Analyze Code Security
   # You may pin to the exact commit or the version.
   # uses: google-github-actions/analyze-code-security-scc@eeab586f1bed7435d05a25d7b5c9580e69224c4f
   uses: google-github-actions/analyze-code-security-scc@v0.1.0
