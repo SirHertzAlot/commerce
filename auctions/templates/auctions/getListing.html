@@ -1,7 +1,7 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <section class="d-flex col">
+<section class="d-flex col">
         <div style="width:50vw; height:100vh; background-color: #0f0f0f0f;">
         </div>
         <div class="d-flex flex-column justify-content-around align-items-end" style="height: 100vh; width: 50vw; padding:0px 10px;">
@@ -18,48 +18,104 @@
                 <div class="d-flex flex-column" style="width: -webkit-fill-available;">
                     <h2>Listing start time</h2>
                     <strong>
-                        {{ Listing_startTime|date:"SHORT_DATETIME_FORMAT" }}
+                        {{ Listing_endTime|time:"h:i:s" }}
+                        <div>
+                            {{ Listing_endTime|timeuntil }}
+                        </div>
                     </strong>
                 </div>
             </div>
             <div class="d-flex flex-column justify-content-around align-items-end" style="width: -webkit-fill-available;">
-                {% if now < Listing_startTime %}
+                {% if now < Listing_endTime and Listing_status == 'Expired' %}
                     <h3>Listing Duration</h3>
                     <time>{{ Listing_duration|date:"SHORT_DATETIME_FORMAT" }}</time>
-                
-                    <h3>Listing Status</h3>
-                    <small>ACTIVE</small>
                     <div class="d-flex flex-column justify-content-evenly">
-                        <form action"{% url 'bidOnListing' id=listing.listing_id %}" method="post">
-                            {{ BidForm }}
-                             <button type="submit">submit</button>
+                    <h3>Add to watchlist</h3>
+                        <form action="{% url 'addToWatchList' id=Listing_id %}" method="post">
+                            {{ WatchlistForm }}
                         </form>
                     </div>
+
+                    <h3>Listing Status</h3>
+                    <small>
+                        <div style="width: -webkit-fill-available;">
+                            {{ Listing_status }}
+                        </div>
+                    </small>
+                    <div class="d-flex flex-column justify-content-evenly">
+                        <form action="{% url 'bidOnListing' id=Listing_id %}" method="post">
+                            {{ BidForm }}
+                             <button class="btn btn-outline-primary text-primary"  type="submit">submit</button>
+                        </form>
+                    </div>
+
+                    {% if is_owner %}
+                    <form method="POST" action="{% url 'closeListing' %}">
+                        <div style="display:none;">{{ csrf_token }}</div>
+                        <div class="d-flex flex-column">
+                            {{ form }}
+                        </div>
+                    <button class="btn btn-outline-primary text-primary"  type="submit">Close auction</button>
+                    </form>
+                    {% else %}
+
+                    {% endif %}
+
                 {% else %}
                     <h3>Listing Duration</h3>
                     <p>00:00</p> 
-
                     <h3>Listing Status</h3>
-                    <small>CLOSED</small>
+                    <small>
+                        <div style="width: -webkit-fill-available;">
+                            {{ Listing_status }}
+                        </div>
+                    </small>
+                    {% if user.is_authenticated %}
+                    <div class="d-flex flex-column justify-content-evenly">
+                        <form action="{% url 'bidOnListing' id=Listing_id user_id=user.user_id %}" method="post">
+                            {% csrf_token %}
+                            {{ BidForm }}
+                             <button class="btn btn-outline-primary text-primary"  type="submit">submit</button>
+                        </form>
+                    </div>
+                        {% for bid in bids%}
+                                <div class="d-flex flex-column justify-content-evenly">
+                                    <header>
+                                        {{ bid.user_id_id }}
+                                    </header>
+                                    <article>
+                                        {{ bid.bid_amount }}
+                                    </article>
+                                </div>
+                        {% endfor %}
+                        <div class="d-flex flex-column justify-content-evenly">
+                            <form action="{% url 'createComment' id=Listing_id user_id=user.user_id %}" method="post">
+                                {% csrf_token %}
+                                {{ CommentForm }}
+                                 <button class="btn btn-outline-primary text-primary" type="submit">submit</button>
+                            </form>
+                        </div>
+                        {% for comment in comments %}
+                        <div class="d-flex flex-column justify-content-evenly">
+                            <header>
+                                {{ comment.comment_owner_id_id }}
+                            </header>
+                            <article>
+                                <p class="text-primary text-lg-start">{{ comment.Comment }}</p>
+                            </article>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                            {{ bids.bid_amount }}
+                    {% endif %}
                 {% endif %}
             </div>                  
-            <div style="width: -webkit-fill-available;">
-                {{ Listing_status|safe }}
-            </div>
-                
-            
-            {% if is_owner %}
-            <form method="POST" action="{% url 'closeListing' %}">
-                <div style="display:none;">{{ csrf_token }}</div>
-                <div class="d-flex flex-column">
-                    {{ form }}
-                </div>
-               <button type="submit">Close auction</button>
-            </form>
-            {% else %}
-
-            {% endif %}
         <div>
-    </section>
-    
+<!-- trunk-ignore(prettier/SyntaxError) -->
+</section>
+<script>
+    document.addEventListener('DOMContentloaded',(() => {
+        if(new Date.now() > {{ Listing_endTime }})
+    }))
+</script>
 {% endblock %}
