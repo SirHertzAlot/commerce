@@ -1,9 +1,12 @@
+# trunk-ignore-all(checkov/CKV2_GHA_1)
 name: Django CI
 
 on:
   push:
+    # trunk-ignore(yamllint/quoted-strings)
     branches: ["main"]
   pull_request:
+    # trunk-ignore(yamllint/quoted-strings)
     branches: ["main"]
 
 jobs:
