@@ -35,6 +35,11 @@
                             {{ WatchlistForm }}
                         </form>
                     </div>
+                    {% if error %}
+                    <div>
+                        {{ error|safe }}
+                    </div>
+                    {% endif %}
 
                     <h3>Listing Status</h3>
                     <small>

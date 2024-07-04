@@ -5,12 +5,84 @@ from django.urls import reverse
 from auctions.forms import BidForm, CommentForm, WatchlistForm
 
 
-def returnGetListing(request, valuesDict, is_owner, commentsDict, bidsDict):
+def returnBidResponse(request, valuesDict, is_owner, commentsDict, bidsDict, error):
     """
     Return a listing using the listing's ID to retrieve it's value.
     This function expects a dictionary of values (Which is the default return value from SQL for retrieving a single listing.), and a boolean value for is_owner.
     :model:`auctions.models.Listing`.
     """
+    if error:
+        return render(
+            request,
+            "auctions/getListing.html",
+            {
+                "Listing_id": valuesDict.listing_id,
+                "Listing_name": valuesDict.Listing_name,
+                "Listing_description": valuesDict.Listing_description,
+                "Listing_category": valuesDict.Listing_category,
+                "Listing_status": valuesDict.listing_status,
+                "Listing_startTime": valuesDict.Listing_startTime,
+                "Listing_endTime": valuesDict.Listing_endTime,
+                "Listing_duration": valuesDict.Listing_duration,
+                "bids": bidsDict,
+                "comments": commentsDict,
+                "WatchlistForm": WatchlistForm(),
+                "CommentForm": CommentForm(),
+                "BidForm": BidForm(),
+                "is_owner": is_owner,
+                "error": error,
+            },
+        )
+    return render(
+        request,
+        "auctions/getListing.html",
+        {
+            "Listing_id": valuesDict.listing_id,
+            "Listing_name": valuesDict.Listing_name,
+            "Listing_description": valuesDict.Listing_description,
+            "Listing_category": valuesDict.Listing_category,
+            "Listing_status": valuesDict.listing_status,
+            "Listing_startTime": valuesDict.Listing_startTime,
+            "Listing_endTime": valuesDict.Listing_endTime,
+            "Listing_duration": valuesDict.Listing_duration,
+            "bids": bidsDict,
+            "comments": commentsDict,
+            "WatchlistForm": WatchlistForm(),
+            "CommentForm": CommentForm(),
+            "BidForm": BidForm(),
+            "is_owner": is_owner,
+        },
+    )
+
+
+def returnGetListing(request, valuesDict, is_owner, commentsDict, bidsDict, error):
+    """
+    Return a listing using the listing's ID to retrieve it's value.
+    This function expects a dictionary of values (Which is the default return value from SQL for retrieving a single listing.), and a boolean value for is_owner.
+    :model:`auctions.models.Listing`.
+    """
+    if error:
+        return render(
+            request,
+            "auctions/getListing.html",
+            {
+                "Listing_id": valuesDict["listing_id"],
+                "Listing_name": valuesDict["Listing_name"],
+                "Listing_description": valuesDict["Listing_description"],
+                "Listing_category": valuesDict["Listing_category"],
+                "Listing_status": valuesDict["listing_status"],
+                "Listing_startTime": valuesDict["Listing_startTime"],
+                "Listing_endTime": valuesDict["Listing_endTime"],
+                "Listing_duration": valuesDict["Listing_duration"],
+                "bids": bidsDict,
+                "comments": commentsDict,
+                "WatchlistForm": WatchlistForm(),
+                "CommentForm": CommentForm(),
+                "BidForm": BidForm(),
+                "is_owner": is_owner,
+                "error": error,
+            },
+        )
     return render(
         request,
         "auctions/getListing.html",

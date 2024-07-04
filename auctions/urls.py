@@ -14,5 +14,10 @@ urlpatterns = [
         "comment/add/<str:id>/<str:user_id>", views.create_comment, name="createComment"
     ),
     path("bid/add/<str:id>/<str:user_id>", views.bid_on_listing, name="bidOnListing"),
-    path("watchlist/add/<str:id>", views.add_to_watchlist, name="addToWatchList"),
+    path(
+        "watchlist/add/<str:id>/<str:user_id>",
+        views.add_to_watchlist,
+        name="addToWatchList",
+    ),
+    path("category/<str:category>", views.return_category, name="returnCategory"),
 ]

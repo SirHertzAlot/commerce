@@ -4,15 +4,26 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from auctions.abstractions import postForm, returnGetListing
+from auctions.abstractions import postForm, returnBidResponse, returnGetListing
+from auctions.validators import validate_bid
 
-from .forms import BidForm, CommentForm, CreateListingForm
+from .forms import BidForm, CommentForm, CreateListingForm, WatchlistForm
 from .models import Bid, Comments, Listing, User, Watchlist
 
 
 def index(request):
+    watchlist = Watchlist.objects.filter(user_id=request.user.user_id).values()
     all_listings = Listing.objects.values().all()
-    return render(request, "auctions/index.html", {"all_listings": all_listings})
+    return render(
+        request,
+        "auctions/index.html",
+        {
+            "all_listings": all_listings,
+            "watchlist": watchlist,
+            "user_id": request.user.user_id,
+            "WatchlistForm": WatchlistForm(),
+        },
+    )
 
 
 def login_view(request):
@@ -90,6 +101,19 @@ def create_listing(request):
         return postForm(request, "Listing")
 
 
+def return_category(request, category):
+    listings = Listing.objects.filter(Listing_category=category).values()
+    return render(
+        request,
+        "auctions/index.html",
+        {
+            "all_listings": listings,
+            "user_id": request.user.user_id,
+            "WatchlistForm": WatchlistForm(),
+        },
+    )
+
+
 def create_comment(request, id, user_id):
     """
     Create an individual :model:`auctions.Commentss`.
@@ -130,17 +154,23 @@ def get_listing(request, id):
     if request.method == "GET":
         valuesList = Listing.objects.filter(pk=id).values()
         valuesDict = valuesList[0]
-        commentsDict = Comments.objects.filter(listing_id=id).values()
-        bidsDict = Bid.objects.filter(listing_id=id).values()
+        commentsDict = (
+            Comments.objects.filter(listing_id=id).order_by("-comment_id").values()
+        )
+        bidsDict = Bid.objects.filter(listing_id=id).order_by("-bid_amount").values()
         Listing_owner = valuesDict["listing_owner_id_id"]
         is_owner = False
         if Listing_owner == request.user.user_id:
             is_owner = True
+            error = None
             return returnGetListing(
-                request, valuesDict, is_owner, commentsDict, bidsDict
+                request, valuesDict, is_owner, commentsDict, bidsDict, error
             )
         else:
-            return returnGetListing(request, valuesDict, is_owner)
+            error = None
+            return returnGetListing(
+                request, valuesDict, commentsDict, bidsDict, is_owner, error
+            )
 
 
 def close_listing(request):
@@ -162,20 +192,66 @@ def close_listing(request):
     return postForm(request, "Listing")
 
 
-def add_to_watchlist(request):
-    return postForm(request, "Watchlist")
+def add_to_watchlist(request, id, user_id):
+    if request.method == "POST":
+        form = WatchlistForm(request.POST)
+        user = User.objects.get(user_id=user_id)
+        listing = Listing.objects.get(listing_id=id)
+        if form.is_valid():
+            print(form.cleaned_data)
+            watchlistItem = Watchlist(
+                add_to_list=form.cleaned_data["add_to_list"],
+                user_id=user,
+                listing_id=listing,
+            )
+            Watchlist.save(watchlistItem)
+            return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("index"))
+    else:
+        return HttpResponseRedirect(reverse("index"))
 
 
 def bid_on_listing(request, id, user_id):
     if request.method == "POST":
-        user = User.objects.get(user_id=user_id)
         listing = Listing.objects.get(listing_id=id)
+        commentsDict = Comments.objects.filter(listing_id=id).values()
+        bidsDict = (
+            Bid.objects.filter(listing_id=id).values().order_by("-bid_amount").values()
+        )
+        Listing_owner = listing.listing_owner_id_id
         form = BidForm(request.POST)
         if form.is_valid():
-            bid = Bid(
-                bid_amount=form.cleaned_data["bid_amount"],
-                user_id=user,
-                listing_id=listing,
-            )
+            bidsDict = Bid.objects.filter(listing_id=id).values()
+            bid_amount = bidsDict[0]["bid_amount"]
+            validated_value = validate_bid(form.cleaned_data["bid_amount"], bid_amount)
+            if validated_value is False:
+                is_owner = False
+                if Listing_owner == request.user.user_id:
+                    is_owner = True
+                return returnBidResponse(
+                    request,
+                    valuesDict=listing,
+                    is_owner=is_owner,
+                    bidsDict=bidsDict,
+                    commentsDict=commentsDict,
+                    error="Your bid was too low. Please make a higher bid.",
+                )
+            user = User.objects.get(user_id=user_id)
+            bid = Bid(bid_amount=validated_value, listing_id=listing, user_id=user)
             Bid.save(bid)
+            is_owner = False
+            if Listing_owner == request.user.user_id:
+                is_owner = True
+                bidsDict = (
+                    Bid.objects.filter(listing_id=id).order_by("-bid_amount").values()
+                )
+            return returnBidResponse(
+                request,
+                valuesDict=listing,
+                is_owner=is_owner,
+                bidsDict=bidsDict,
+                commentsDict=commentsDict,
+                error=None,
+            )
+        else:
             return HttpResponseRedirect(reverse("index"))

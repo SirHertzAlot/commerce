@@ -33,9 +33,7 @@ class Listing(models.Model):
     listing_name = models.CharField(name="Listing_name", max_length=90)
     listing_category = models.CharField(name="Listing_category", max_length=90)
     listing_description = models.TextField(name="Listing_description")
-    listing_image = models.ImageField(
-        name="Listing_image",
-    )
+    listing_image = models.ImageField(name="Listing_image", upload_to="uploads")
     listing_start_time = models.DateTimeField(
         name="Listing_startTime", default=datetime.now(), editable=False
     )
