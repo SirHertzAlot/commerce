@@ -1,1 +1,2 @@
 pip install django --user
+pip install pillow --user
