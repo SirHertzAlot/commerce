@@ -1,78 +1,122 @@
-{% extends "auctions/layout.html" %}
-
-{% block body %}
-    <main class="d-flex flex-row">
-        <section class="vh-100">
-            <div class="flex-shrink-0 px-3" style="width: 280px;">
-              <span class="fs-5 fw-semibold">
-                <h2>Categories</h2>
-              </span>
-                {% for category in all_listings%}
-                  <a href="{% url 'returnCategory' category=category.Listing_category %}" class="list-group-item list-group-item-action py-6 my-4 lh-sm" aria-current="true">
-                    <div class="d-flex flex-column w-100 align-items-center justify-space-evenly">
-                      <strong style="width: 100%; justify-content: space-evenly;" class="mb-1 py-2 d-flex flex-row justify-space-evenly">
-                          {{ category.Listing_category }}
-                      </strong>
-                    </div>
-                  </a>
-                {% endfor %}
-              </div>
-        </section>
-        <section class="vh-100" style="width: 100%;">
-          <h2 class="pb-2">Active Listings</h2>
-            <div class="px-4 d-flex flex-row justify-content-evenly" style="flex-wrap:wrap;" id="listings-cards">
-                  {% for listing in all_listings %}
-                    <div class="d-flex flex-row align-items-stretch g-4 py-2" style="width:fit-content">
-                      <div class="col">
-                        <div class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('unsplash-photo-1.jpg'); width: max-content">
-                          <div class="d-flex flex-column p-5 pb-3 text-shadow-1">
-                            <a href="{% url 'getListing' id=listing.listing_id %}">{{listing.listing_id}}</a><h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">{{ listing.Listing_name }}</h3>
-                            <form method="POST" action="{% url 'addToWatchList' id=listing.listing_id user_id=user_id  %}">
-                              {% csrf_token %}
-                              {{ WatchlistForm }}
-                              <button type="submit">add</button>
-                            </form>
-                            <ul class="d-flex list-unstyled mt-auto">
-                              <li class="me-auto">
-                                <img src="https://github.com/twbs.png" alt="Bootstrap" width="32" height="32" class="rounded-circle border border-white">
-                              </li>
-                              <li class="d-flex align-items-center me-3">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"></use></svg>
-                                <small>{{ listing.Listing_category | safe }}</small>
-                              </li>
-                              <li class="d-flex align-items-center">
-                                <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"></use></svg>
-                                <small>{{ listing.Listing_duration | safe }}</small>
-                              </li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  {% endfor %}
+{% extends "auctions/layout.html" %} {% block body %}
+<main class="d-flex flex-row">
+  <section class="vh-100">
+    <div class="flex-shrink-0 px-3" style="width: 280px">
+      <span class="fs-5 fw-semibold">
+        <h2>Categories</h2>
+      </span>
+      {% for category in all_listings%}
+      <a
+        href="{% url 'returnCategory' category=category.Listing_category %}"
+        class="list-group-item list-group-item-action py-6 my-4 lh-sm"
+        aria-current="true"
+      >
+        <div
+          class="d-flex flex-column w-100 align-items-center justify-space-evenly"
+        >
+          <strong
+            style="width: 100%; justify-content: space-evenly"
+            class="mb-1 py-2 d-flex flex-row justify-space-evenly"
+          >
+            {{ category.Listing_category }}
+          </strong>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  <section class="vh-100" style="width: 100%">
+    <h2 class="pb-2">Active Listings</h2>
+    <div
+      class="px-4 d-flex flex-row justify-content-evenly"
+      style="flex-wrap: wrap"
+      id="listings-cards"
+    >
+      {% for listing in all_listings %}
+      <div
+        class="d-flex flex-row align-items-stretch g-4 py-2"
+        style="width: fit-content"
+      >
+        <div class="col">
+          <div
+            class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg"
+            style="
+              background-image: url(&quot;unsplash-photo-1.jpg&quot;);
+              width: max-content;
+            "
+          >
+            <div class="d-flex flex-column p-5 pb-3 text-shadow-1">
+              <a href="{% url 'getListing' id=listing.listing_id %}"
+                >{{listing.listing_id}}</a
+              >
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+                {{ listing.Listing_name }}
+              </h3>
+              <form
+                method="POST"
+                action="{% url 'addToWatchList' id=listing.listing_id user_id=user_id  %}"
+              >
+                {% csrf_token %} {{ WatchlistForm }}
+                <button type="submit">add</button>
+              </form>
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto">
+                  <img
+                    src="https://github.com/twbs.png"
+                    alt="Bootstrap"
+                    width="32"
+                    height="32"
+                    class="rounded-circle border border-white"
+                  />
+                </li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#geo-fill"></use>
+                  </svg>
+                  <small>{{ listing.Listing_category | safe }}</small>
+                </li>
+                <li class="d-flex align-items-center">
+                  <svg class="bi me-2" width="1em" height="1em">
+                    <use xlink:href="#calendar3"></use>
+                  </svg>
+                  <small>{{ listing.Listing_duration | safe }}</small>
+                </li>
+              </ul>
             </div>
-        </section>
-                
-        <section class="vh-100">
-            <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary" style="width: 380px;">
-                  <h2 class="fs-5 fw-semibold">Watchlist</h2>
-                <div class="list-group list-group-flush border-bottom scrollarea">
-                  <a href="#" class="list-group-item list-group-item-action py-3 my-3 lh-sm" aria-current="true">
-                    <div class="d-flex w-100 align-items-center justify-content-between">
-                      <strong class="mb-1">Listing Name</strong>
-                      <span class="badge bg-secondary">
-                        <small>Wed</small>
-                      </span>
-                    </div>
-                    <div class="mb-1 small d-flex flex-column justify-content-between">
-                        <p>Placeholder for Listing Image</p>
-                        <div>
-                            <p>Duration: 09:00Hrs</p>
-                        </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-        </section>
-    </main>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="vh-100">
+    <div
+      class="d-flex flex-column align-items-stretch flex-shrink-0 bg-body-tertiary"
+      style="width: 380px"
+    >
+      <h2 class="fs-5 fw-semibold">Watchlist</h2>
+      <div class="list-group list-group-flush border-bottom scrollarea">
+        <a
+          href="#"
+          class="list-group-item list-group-item-action py-3 my-3 lh-sm"
+          aria-current="true"
+        >
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">Listing Name</strong>
+            <span class="badge bg-secondary">
+              <small>Wed</small>
+            </span>
+          </div>
+          <div class="mb-1 small d-flex flex-column justify-content-between">
+            <p>Placeholder for Listing Image</p>
+            <div>
+              <p>Duration: 09:00Hrs</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
 {% endblock %}
