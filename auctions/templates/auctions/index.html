@@ -42,46 +42,47 @@
             class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg"
             style="
               background-image: url(&quot;unsplash-photo-1.jpg&quot;);
-              width: max-content;
+              width: 400px;
+              height: 200px;
             "
           >
-            <div class="d-flex flex-column p-5 pb-3 text-shadow-1">
-              <a href="{% url 'getListing' id=listing.listing_id %}"
-                >{{listing.listing_id}}</a
-              >
-              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
-                {{ listing.Listing_name }}
+            <div
+              class="d-flex flex-column p-1 text-shadow-1"
+              style="justify-content: space-between; height: 175px"
+            >
+              <h3 class="m-2 display-6 lh-1 fw-bold">
+                <a href="{% url 'getListing' id=listing.listing_id %}">
+                  {{ listing.Listing_name }}
+                </a>
               </h3>
-              <form
-                method="POST"
-                action="{% url 'addToWatchList' id=listing.listing_id user_id=user_id  %}"
+              <div
+                style="justify-content: space-around; align-items: center"
+                class="d-flex flex-row"
               >
-                {% csrf_token %} {{ WatchlistForm }}
-                <button type="submit">add</button>
-              </form>
-              <ul class="d-flex list-unstyled mt-auto">
-                <li class="me-auto">
-                  <img
-                    src="https://github.com/twbs.png"
-                    alt="Bootstrap"
-                    width="32"
-                    height="32"
-                    class="rounded-circle border border-white"
-                  />
-                </li>
-                <li class="d-flex align-items-center me-3">
-                  <svg class="bi me-2" width="1em" height="1em">
-                    <use xlink:href="#geo-fill"></use>
-                  </svg>
-                  <small>{{ listing.Listing_category | safe }}</small>
-                </li>
-                <li class="d-flex align-items-center">
-                  <svg class="bi me-2" width="1em" height="1em">
-                    <use xlink:href="#calendar3"></use>
-                  </svg>
-                  <small>{{ listing.Listing_duration | safe }}</small>
-                </li>
-              </ul>
+                <ul class="d-flex list-unstyled">
+                  <li class="d-flex align-items-center me-3">
+                    <svg class="bi me-2" width="1em" height="1em">
+                      <use xlink:href="#geo-fill"></use>
+                    </svg>
+                    <small>{{ listing.Listing_category | safe }}</small>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <svg class="bi me-2" width="1em" height="1em">
+                      <use xlink:href="#calendar3"></use>
+                    </svg>
+                    <small>{{ listing.Listing_duration | safe }}</small>
+                  </li>
+                </ul>
+                <form
+                  class="d-flex flex-row"
+                  style="width: fit-content"
+                  method="POST"
+                  action="{% url 'addToWatchList' id=listing.listing_id user_id=user_id  %}"
+                >
+                  {% csrf_token %} {{ WatchlistForm }}
+                  <button type="submit">add</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>

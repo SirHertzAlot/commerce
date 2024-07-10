@@ -23,7 +23,8 @@ class CreateListingForm(forms.Form):
         label="Listing_category", max_length=90, required=True
     )
     listing_status = forms.CharField(initial="Active")
-    listing_start_time = forms.DateTimeField(initial=datetime.now())
+    listing_start_time = forms.DateTimeField(initial=datetime.now(), disabled=True)
+    listing_end_time = forms.DateTimeField(initial=datetime.now())
     listing_duration = forms.TimeField(label="Listing_duration", required=True)
 
 
