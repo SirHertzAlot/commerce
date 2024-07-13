@@ -11,19 +11,27 @@ from .forms import BidForm, CommentForm, CreateListingForm, WatchlistForm
 from .models import Bid, Comments, Listing, User, Watchlist
 
 
+
+
 def index(request):
-    watchlist = Watchlist.objects.filter(user_id=request.user.user_id).values()
+    indexURI = "auctions/index.html"
     all_listings = Listing.objects.values().all()
-    return render(
-        request,
-        "auctions/index.html",
-        {
+    if request.user.is_authenticated:
+        return render(
+            request,
+            indexURI,
+            {
+                "all_listings": all_listings,
+                "user_id": request.user.user_id,
+                "WatchlistForm": WatchlistForm(),
+            })
+    else:
+        print("Not authenticated!")
+        return render(request, indexURI, {
             "all_listings": all_listings,
-            "watchlist": watchlist,
-            "user_id": request.user.user_id,
             "WatchlistForm": WatchlistForm(),
-        },
-    )
+            "user_id": request.user
+        })
 
 
 def login_view(request):
@@ -102,10 +110,11 @@ def create_listing(request):
 
 
 def return_category(request, category):
+    indexURI = "auctions/index.html"
     listings = Listing.objects.filter(Listing_category=category).values()
     return render(
         request,
-        "auctions/index.html",
+        indexURI,
         {
             "all_listings": listings,
             "user_id": request.user.user_id,
@@ -255,3 +264,11 @@ def bid_on_listing(request, id, user_id):
             )
         else:
             return HttpResponseRedirect(reverse("index"))
+
+
+def get_watch_list(request):
+    if request.method == "GET":
+        watchlist = Watchlist.objects.filter(user_id_id=request.user.user_id).values()
+        return render(request, "auctions/watchlist.html", {
+            "watchlist": watchlist,
+        })

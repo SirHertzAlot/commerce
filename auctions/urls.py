@@ -19,5 +19,6 @@ urlpatterns = [
         views.add_to_watchlist,
         name="addToWatchList",
     ),
+    path("watchlist/get/", views.get_watch_list, name="getWatchList"),
     path("category/<str:category>", views.return_category, name="returnCategory"),
 ]

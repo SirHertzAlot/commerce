@@ -1,6 +1,10 @@
 {% extends "auctions/layout.html" %} {% block body %}
-<form action="{% url 'createListing' %}">
-  {{createListingForm}} {% csrf_token %}
-  <button type="submit">Create Listing</button>
-</form>
+<div style="height: 50vh;" class="d-flex flex-column align-items-center">
+    <form class="d-flex flex-column h-100" style="width:fit-content;" action="{% url 'createListing' %}">
+        <ul style="list-style: none; height: inherit;" class="d-flex flex-column justify-content-evenly">
+          {{ createListingForm.as_ul}}
+        </ul>
+      <button class="w-auto h-auto" type="submit">Create Listing</button>
+    </form>
+</div>
 {% endblock %}

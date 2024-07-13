@@ -97,26 +97,21 @@
       style="width: 380px"
     >
       <h2 class="fs-5 fw-semibold">Watchlist</h2>
-      <div class="list-group list-group-flush border-bottom scrollarea">
-        <a
-          href="#"
-          class="list-group-item list-group-item-action py-3 my-3 lh-sm"
-          aria-current="true"
-        >
-          <div class="d-flex w-100 align-items-center justify-content-between">
-            <strong class="mb-1">Listing Name</strong>
-            <span class="badge bg-secondary">
-              <small>Wed</small>
-            </span>
-          </div>
-          <div class="mb-1 small d-flex flex-column justify-content-between">
-            <p>Placeholder for Listing Image</p>
-            <div>
-              <p>Duration: 09:00Hrs</p>
+        <div class="list-group list-group-flush border-bottom scrollarea">
+          <a
+            href="{% url 'getWatchList' %}"
+            class="list-group-item list-group-item-action py-3 my-3 lh-sm"
+            aria-current="true"
+            disabled="true"
+          >
+            <div class="d-flex w-100 align-items-center justify-content-between">
+              <strong class="mb-1">No items in watchlist.</strong>
+              <span class="badge bg-secondary">
+                <small></small>
+              </span>
             </div>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
     </div>
   </section>
 </main>
