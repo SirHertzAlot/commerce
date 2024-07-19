@@ -24,6 +24,7 @@ def returnBidResponse(request, valuesDict, is_owner, commentsDict, bidsDict, err
                 "Listing_startTime": valuesDict.Listing_startTime,
                 "Listing_endTime": valuesDict.Listing_endTime,
                 "Listing_duration": valuesDict.Listing_duration,
+                "Listing_image": valuesDict.Listing_image,
                 "bids": bidsDict,
                 "comments": commentsDict,
                 "WatchlistForm": WatchlistForm(),
@@ -67,13 +68,14 @@ def returnGetListing(request, valuesDict, is_owner, commentsDict, bidsDict, erro
             "auctions/getListing.html",
             {
                 "Listing_id": valuesDict["listing_id"],
-                "Listing_name": valuesDict["Listing_name"],
-                "Listing_description": valuesDict["Listing_description"],
-                "Listing_category": valuesDict["Listing_category"],
+                "Listing_name": valuesDict["listing_name"],
+                "Listing_description": valuesDict["listing_description"],
+                "Listing_category": valuesDict["listing_category"],
                 "Listing_status": valuesDict["listing_status"],
-                "Listing_startTime": valuesDict["Listing_startTime"],
-                "Listing_endTime": valuesDict["Listing_endTime"],
-                "Listing_duration": valuesDict["Listing_duration"],
+                "Listing_startTime": valuesDict["listing_start_time"],
+                "Listing_endTime": valuesDict["listing_end_time"],
+                "Listing_duration": valuesDict["listing_duration"],
+                "Listing_image": valuesDict["listing_image"],
                 "bids": bidsDict,
                 "comments": commentsDict,
                 "WatchlistForm": WatchlistForm(),
@@ -88,13 +90,14 @@ def returnGetListing(request, valuesDict, is_owner, commentsDict, bidsDict, erro
         "auctions/getListing.html",
         {
             "Listing_id": valuesDict["listing_id"],
-            "Listing_name": valuesDict["Listing_name"],
-            "Listing_description": valuesDict["Listing_description"],
-            "Listing_category": valuesDict["Listing_category"],
+            "Listing_name": valuesDict["listing_name"],
+            "Listing_description": valuesDict["listing_description"],
+            "Listing_category": valuesDict["listing_category"],
             "Listing_status": valuesDict["listing_status"],
-            "Listing_startTime": valuesDict["Listing_startTime"],
-            "Listing_endTime": valuesDict["Listing_endTime"],
-            "Listing_duration": valuesDict["Listing_duration"],
+            "Listing_startTime": valuesDict["listing_start_time"],
+            "Listing_endTime": valuesDict["listing_end_time"],
+            "Listing_duration": valuesDict["listing_duration"],
+            "Listing_image": valuesDict["listing_image"],
             "bids": bidsDict,
             "comments": commentsDict,
             "WatchlistForm": WatchlistForm(),
@@ -112,10 +115,13 @@ def postForm(request, formString: str):
     :model:`auctions.models`,
     """
     if request.method == "POST":
-        form = f"{formString}Form"(request.POST)
+        if request.FILES:
+            form = f"{formString}Form"(request.POST, request.FILES)
+        else:
+            form = f"{formString}Form"(request.POST)
         if form.is_valid():
-            # Save valid listing request
-            f"{formString}".save(form.cleaned_data)
+                # Save valid listing request
+                f"{formString}".save(form.cleaned_data)
 
-            # Redirect user to list of entries
-            return HttpResponseRedirect(reverse("index"))
+                # Redirect user to list of entries
+                return HttpResponseRedirect(reverse("index"))

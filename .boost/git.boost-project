@@ -3,7 +3,7 @@
   "summary": {
     "projectName": "git",
     "summaryUrl": ".boost\\git.summary.boost-notebook",
-    "filesToAnalyze": 49,
+    "filesToAnalyze": 53,
     "filesAnalyzed": 0,
     "issues": [
       "No summary file found at .boost\\git.summary.boost-notebook"
@@ -456,6 +456,42 @@
     "commerce\\auctions\\migrations\\__init__.py": {
       "sourceRelFile": "commerce\\auctions\\migrations\\__init__.py",
       "notebookRelFile": ".boost/commerce/auctions/migrations/__init__.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\templates\\auctions\\watchlist.html": {
+      "sourceRelFile": "auctions\\templates\\auctions\\watchlist.html",
+      "notebookRelFile": ".boost/auctions/templates/auctions/watchlist.html.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\migrations\\0009_alter_listing_listing_endtime_and_more.py": {
+      "sourceRelFile": "auctions\\migrations\\0009_alter_listing_listing_endtime_and_more.py",
+      "notebookRelFile": ".boost/auctions/migrations/0009_alter_listing_listing_endtime_and_more.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\migrations\\0011_alter_listing_listing_duration_and_more.py": {
+      "sourceRelFile": "auctions\\migrations\\0011_alter_listing_listing_duration_and_more.py",
+      "notebookRelFile": ".boost/auctions/migrations/0011_alter_listing_listing_duration_and_more.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\migrations\\0010_alter_listing_listing_endtime_and_more.py": {
+      "sourceRelFile": "auctions\\migrations\\0010_alter_listing_listing_endtime_and_more.py",
+      "notebookRelFile": ".boost/auctions/migrations/0010_alter_listing_listing_endtime_and_more.py.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,

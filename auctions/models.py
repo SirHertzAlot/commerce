@@ -1,6 +1,8 @@
 import uuid
-from datetime import datetime
+import datetime
 
+from django.utils import timezone
+from django.utils.timezone import make_aware
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -22,7 +24,7 @@ class Listing(models.Model):
     """
     Stores a single listing object. :model:`listing.Listing`.
     """
-
+    now = make_aware(datetime.datetime.now())
     class Status(models.TextChoices):
         ACTIVE = "Active"
         EXPIRED = "Expired"
@@ -30,17 +32,17 @@ class Listing(models.Model):
     listing_id = models.UUIDField(
         default=uuid.uuid4, db_index=True, editable=False, primary_key=True, unique=True
     )
-    listing_name = models.CharField(name="Listing_name", max_length=90)
-    listing_category = models.CharField(name="Listing_category", max_length=90)
-    listing_description = models.TextField(name="Listing_description")
-    listing_image = models.ImageField(name="Listing_image", upload_to="uploads")
+    listing_name = models.CharField("Listing_name", max_length=90, blank=True)
+    listing_category = models.CharField("Listing_category", max_length=90, blank=True)
+    listing_description = models.TextField("Listing_description", blank=True)
+    listing_image = models.ImageField("Listing_image", upload_to="uploads/", null=True, blank=True)
     listing_start_time = models.DateTimeField(
-        name="Listing_startTime", default=datetime.now(), editable=False
+    "Listing_startTime", default=now, editable=False
     )
     listing_end_time = models.DateTimeField(
-        name="Listing_endTime", default=datetime.now()
+    "Listing_endTime", default=now
     )
-    listing_duration = models.DurationField(name="Listing_duration")
+    listing_duration = models.DurationField("Listing_duration", default=60000)
     listing_status = models.CharField(
         choices=Status, default=Status.ACTIVE, max_length=10
     )

@@ -7,7 +7,7 @@
       </span>
       {% for category in all_listings%}
       <a
-        href="{% url 'returnCategory' category=category.Listing_category %}"
+        href="{% url 'returnCategory' category=category.listing_category %}"
         class="list-group-item list-group-item-action py-6 my-4 lh-sm"
         aria-current="true"
       >
@@ -41,7 +41,7 @@
           <div
             class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg"
             style="
-              background-image: url(&quot;unsplash-photo-1.jpg&quot;);
+              background-image: '{{listing.listing_image}}';
               width: 400px;
               height: 200px;
             "
@@ -52,7 +52,7 @@
             >
               <h3 class="m-2 display-6 lh-1 fw-bold">
                 <a href="{% url 'getListing' id=listing.listing_id %}">
-                  {{ listing.Listing_name }}
+                  {{ listing.listing_name }}
                 </a>
               </h3>
               <div
@@ -64,13 +64,13 @@
                     <svg class="bi me-2" width="1em" height="1em">
                       <use xlink:href="#geo-fill"></use>
                     </svg>
-                    <small>{{ listing.Listing_category | safe }}</small>
+                    <small>{{ listing.listing_category | safe }}</small>
                   </li>
                   <li class="d-flex align-items-center">
                     <svg class="bi me-2" width="1em" height="1em">
                       <use xlink:href="#calendar3"></use>
                     </svg>
-                    <small>{{ listing.Listing_duration | safe }}</small>
+                    <small>{{ listing.listing_duration | safe }}</small>
                   </li>
                 </ul>
                 <form
@@ -98,6 +98,7 @@
     >
       <h2 class="fs-5 fw-semibold">Watchlist</h2>
         <div class="list-group list-group-flush border-bottom scrollarea">
+          {% if watchlist %}
           <a
             href="{% url 'getWatchList' %}"
             class="list-group-item list-group-item-action py-3 my-3 lh-sm"
@@ -105,12 +106,20 @@
             disabled="true"
           >
             <div class="d-flex w-100 align-items-center justify-content-between">
-              <strong class="mb-1">No items in watchlist.</strong>
+              <strong class="mb-1">Check out your watchlist items here.</strong>
               <span class="badge bg-secondary">
                 <small></small>
               </span>
             </div>
           </a>
+          {% else %}
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">No items in watchlist.</strong>
+            <span class="badge bg-secondary">
+              <small></small>
+            </span>
+          </div>
+          {% endif %}
         </div>
     </div>
   </section>

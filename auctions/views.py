@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -11,27 +12,19 @@ from .forms import BidForm, CommentForm, CreateListingForm, WatchlistForm
 from .models import Bid, Comments, Listing, User, Watchlist
 
 
-
-
+# Base route when you first login.
+@login_required(login_url='/login')
 def index(request):
     indexURI = "auctions/index.html"
     all_listings = Listing.objects.values().all()
-    if request.user.is_authenticated:
-        return render(
+    return render(
             request,
             indexURI,
             {
                 "all_listings": all_listings,
                 "user_id": request.user.user_id,
                 "WatchlistForm": WatchlistForm(),
-            })
-    else:
-        print("Not authenticated!")
-        return render(request, indexURI, {
-            "all_listings": all_listings,
-            "WatchlistForm": WatchlistForm(),
-            "user_id": request.user
-        })
+    })
 
 
 def login_view(request):
@@ -55,7 +48,8 @@ def login_view(request):
     else:
         return render(request, "auctions/login.html")
 
-
+#Logout view
+@login_required(login_url='/login')
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
@@ -91,14 +85,16 @@ def register(request):
 
 
 # Create listing view to display proper information.
+@login_required(login_url='/login')
 def create_listing(request):
     """
-    Create an individual :model:`auctions.Listingmodel`.
+    Create an individual :model:`auctions.Listing`.
 
     **Template:**
 
     :template:`auctions/createListing.html`
     """
+    indexURI = "auctions/index.html"
     if request.method == "GET":
         return render(
             request,
@@ -106,12 +102,30 @@ def create_listing(request):
             {"createListingForm": CreateListingForm()},
         )
     if request.method == "POST":
-        return postForm(request, "Listing")
+        form = CreateListingForm(request.POST, request.FILES)
+        if form.is_valid():
+            listing = form.save(commit=False)
+            listing.listing_owner_id_id = request.user.user_id
+            # Save valid listing request
+            listing.save()
+            
+            all_listings = Listing.objects.values().all()
+            # Redirect user to list of entries
+            return render(
+            request,
+            indexURI,
+            {
+                "user_id": request.user.user_id,
+                "WatchlistForm": WatchlistForm(),
+            })
+        else:
+            return HttpResponseRedirect(reverse("index"))
 
-
+# Return categories route.
+@login_required(login_url='/login')
 def return_category(request, category):
     indexURI = "auctions/index.html"
-    listings = Listing.objects.filter(Listing_category=category).values()
+    listings = Listing.objects.filter(listing_category=category).values()
     return render(
         request,
         indexURI,
@@ -122,7 +136,8 @@ def return_category(request, category):
         },
     )
 
-
+#Create comment route.
+@login_required(login_url='/login')
 def create_comment(request, id, user_id):
     """
     Create an individual :model:`auctions.Commentss`.
@@ -144,6 +159,7 @@ def create_comment(request, id, user_id):
 
 
 # Get listing based off of listing id
+@login_required(login_url='/login')
 def get_listing(request, id):
     """
     Display an individual :model:`auctions.Listing` model.
@@ -181,7 +197,8 @@ def get_listing(request, id):
                 request, valuesDict, commentsDict, bidsDict, is_owner, error
             )
 
-
+# Close a listing post route.
+@login_required(login_url='/login')
 def close_listing(request):
     """
     Change the status of a listing to closed. :model:`auctions.Listing.listing_status` model.
@@ -200,7 +217,8 @@ def close_listing(request):
     """
     return postForm(request, "Listing")
 
-
+# Add a listing to watchlist post route.
+@login_required(login_url='/login')
 def add_to_watchlist(request, id, user_id):
     if request.method == "POST":
         form = WatchlistForm(request.POST)
@@ -219,7 +237,8 @@ def add_to_watchlist(request, id, user_id):
     else:
         return HttpResponseRedirect(reverse("index"))
 
-
+# Bid on a listing post route.
+@login_required(login_url='/login')
 def bid_on_listing(request, id, user_id):
     if request.method == "POST":
         listing = Listing.objects.get(listing_id=id)
@@ -265,7 +284,8 @@ def bid_on_listing(request, id, user_id):
         else:
             return HttpResponseRedirect(reverse("index"))
 
-
+# Bid on a listing post route.
+@login_required(login_url='/login')
 def get_watch_list(request):
     if request.method == "GET":
         watchlist = Watchlist.objects.filter(user_id_id=request.user.user_id).values()
