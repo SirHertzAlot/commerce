@@ -62,6 +62,7 @@ def returnGetListing(request, valuesDict, is_owner, commentsDict, bidsDict, erro
     This function expects a dictionary of values (Which is the default return value from SQL for retrieving a single listing.), and a boolean value for is_owner.
     :model:`auctions.models.Listing`.
     """
+    print(valuesDict)
     if error:
         return render(
             request,

@@ -17,6 +17,7 @@ from .models import Bid, Comments, Listing, User, Watchlist
 def index(request):
     indexURI = "auctions/index.html"
     all_listings = Listing.objects.values().all()
+    print(all_listings)
     return render(
             request,
             indexURI,
