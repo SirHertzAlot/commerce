@@ -42,6 +42,7 @@ class Listing(models.Model):
     listing_end_time = models.DateTimeField(
     "Listing_endTime", default=now
     )
+    listing_winner = models.CharField("Listing_winner", max_length=90, blank=True, null=True, editable=False)
     listing_duration = models.DurationField("Listing_duration", default=60000)
     listing_status = models.CharField(
         choices=Status, default=Status.ACTIVE, max_length=10

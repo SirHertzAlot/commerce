@@ -4,6 +4,7 @@ from django.urls import reverse
 
 from auctions.forms import BidForm, CommentForm, WatchlistForm
 
+listing_endpoint = "auctions/getListing.html"
 
 def returnBidResponse(request, valuesDict, is_owner, commentsDict, bidsDict, error):
     """
@@ -14,17 +15,17 @@ def returnBidResponse(request, valuesDict, is_owner, commentsDict, bidsDict, err
     if error:
         return render(
             request,
-            "auctions/getListing.html",
+            listing_endpoint,
             {
                 "Listing_id": valuesDict.listing_id,
-                "Listing_name": valuesDict.Listing_name,
-                "Listing_description": valuesDict.Listing_description,
-                "Listing_category": valuesDict.Listing_category,
+                "Listing_name": valuesDict.listing_name,
+                "Listing_description": valuesDict.listing_description,
+                "Listing_category": valuesDict.listing_category,
                 "Listing_status": valuesDict.listing_status,
-                "Listing_startTime": valuesDict.Listing_startTime,
-                "Listing_endTime": valuesDict.Listing_endTime,
-                "Listing_duration": valuesDict.Listing_duration,
-                "Listing_image": valuesDict.Listing_image,
+                "Listing_startTime": valuesDict.listing_start_time,
+                "Listing_endTime": valuesDict.listing_end_time,
+                "Listing_duration": valuesDict.listing_duration,
+                "Listing_image": valuesDict.listing_image,
                 "bids": bidsDict,
                 "comments": commentsDict,
                 "WatchlistForm": WatchlistForm(),
@@ -36,16 +37,17 @@ def returnBidResponse(request, valuesDict, is_owner, commentsDict, bidsDict, err
         )
     return render(
         request,
-        "auctions/getListing.html",
+        listing_endpoint,
         {
             "Listing_id": valuesDict.listing_id,
-            "Listing_name": valuesDict.Listing_name,
-            "Listing_description": valuesDict.Listing_description,
-            "Listing_category": valuesDict.Listing_category,
+            "Listing_name": valuesDict.listing_name,
+            "Listing_description": valuesDict.listing_description,
+            "Listing_category": valuesDict.listing_category,
             "Listing_status": valuesDict.listing_status,
-            "Listing_startTime": valuesDict.Listing_startTime,
-            "Listing_endTime": valuesDict.Listing_endTime,
-            "Listing_duration": valuesDict.Listing_duration,
+            "Listing_startTime": valuesDict.listing_start_time,
+            "Listing_endTime": valuesDict.listing_end_time,
+            "Listing_duration": valuesDict.listing_duration,
+            "Listing_image": valuesDict.listing_image,
             "bids": bidsDict,
             "comments": commentsDict,
             "WatchlistForm": WatchlistForm(),
@@ -66,7 +68,7 @@ def returnGetListing(request, valuesDict, is_owner, commentsDict, bidsDict, erro
     if error:
         return render(
             request,
-            "auctions/getListing.html",
+            listing_endpoint,
             {
                 "Listing_id": valuesDict["listing_id"],
                 "Listing_name": valuesDict["listing_name"],
@@ -88,7 +90,7 @@ def returnGetListing(request, valuesDict, is_owner, commentsDict, bidsDict, erro
         )
     return render(
         request,
-        "auctions/getListing.html",
+        listing_endpoint,
         {
             "Listing_id": valuesDict["listing_id"],
             "Listing_name": valuesDict["listing_name"],

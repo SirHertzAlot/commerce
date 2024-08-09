@@ -251,37 +251,40 @@ def bid_on_listing(request, id, user_id):
         form = BidForm(request.POST)
         if form.is_valid():
             bidsDict = Bid.objects.filter(listing_id=id).values()
-            bid_amount = bidsDict[0]["bid_amount"]
-            validated_value = validate_bid(form.cleaned_data["bid_amount"], bid_amount)
-            if validated_value is False:
+            if bidsDict.exists():
+                bid_amount = bidsDict[0]["bid_amount"]
+                validated_value = validate_bid(form.cleaned_data["bid_amount"], bid_amount)
+                if validated_value is False:
+                    is_owner = False
+                    if Listing_owner == request.user.user_id:
+                        is_owner = True
+                    return returnBidResponse(
+                        request,
+                        valuesDict=listing,
+                        is_owner=is_owner,
+                        bidsDict=bidsDict,
+                        commentsDict=commentsDict,
+                        error="Your bid was too low. Please make a higher bid.",
+                    )
+            else:
+                validated_value = form.cleaned_data["bid_amount"]
+                user = User.objects.get(user_id=user_id)
+                bid = Bid(bid_amount=validated_value, listing_id=listing, user_id=user)
+                Bid.save(bid)
                 is_owner = False
                 if Listing_owner == request.user.user_id:
                     is_owner = True
+                    bidsDict = (
+                        Bid.objects.filter(listing_id=id).order_by("-bid_amount").values()
+                    )
                 return returnBidResponse(
                     request,
                     valuesDict=listing,
                     is_owner=is_owner,
                     bidsDict=bidsDict,
                     commentsDict=commentsDict,
-                    error="Your bid was too low. Please make a higher bid.",
+                    error=None,
                 )
-            user = User.objects.get(user_id=user_id)
-            bid = Bid(bid_amount=validated_value, listing_id=listing, user_id=user)
-            Bid.save(bid)
-            is_owner = False
-            if Listing_owner == request.user.user_id:
-                is_owner = True
-                bidsDict = (
-                    Bid.objects.filter(listing_id=id).order_by("-bid_amount").values()
-                )
-            return returnBidResponse(
-                request,
-                valuesDict=listing,
-                is_owner=is_owner,
-                bidsDict=bidsDict,
-                commentsDict=commentsDict,
-                error=None,
-            )
         else:
             return HttpResponseRedirect(reverse("index"))
 

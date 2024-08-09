@@ -6,7 +6,7 @@
             <img  src="{{MEDIA_URL}}{{ Listing_image }}" alt="Product" />
         </div>
         <div class="d-flex flex-column justify-content-around align-items-end" style="height: 100vh; width: 50vw; padding:0px 10px;">
-            <div class="d-flex flex-column" style="width: -webkit-fill-available;">
+            <div class="d-flex flex-column" style="width: -webkit-fill-available; align-items: end;">
                 <h1>
                     {{ Listing_name }}
                 </h1>
@@ -16,7 +16,7 @@
                 <p class="align-self-end justify-self-center" style="height: 100%;">
                     {{ Listing_description }}
                 </p>
-                <div class="d-flex flex-column" style="width: -webkit-fill-available;">
+                <div class="d-flex flex-column" style="width: -webkit-fill-available; align-items: end;">
                     <h2>Listing start time</h2>
                     <strong>
                         {{ Listing_endTime|time:"h:i:s" }}
@@ -32,7 +32,8 @@
                     <time>{{ Listing_duration|date:"SHORT_DATETIME_FORMAT" }}</time>
                     <div class="d-flex flex-column justify-content-evenly">
                     <h3>Add to watchlist</h3>
-                        <form action="{% url 'addToWatchList' id=Listing_id %}" method="post">
+                        <form
+                        action="{% url 'addToWatchList' id=Listing_id %}" method="post">
                             {{ WatchlistForm }}
                         </form>
                     </div>
@@ -49,9 +50,15 @@
                         </div>
                     </small>
                     <div class="d-flex flex-column justify-content-evenly">
-                        <form action="{% url 'bidOnListing' id=Listing_id %}" method="post">
+                        <form
+                        style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        "
+                        action="{% url 'bidOnListing' id=Listing_id %}" method="post">
                             {{ BidForm }}
-                             <button class="btn btn-outline-primary text-primary"  type="submit">submit</button>
+                            <button class="btn btn-outline-primary text-primary"  type="submit">submit</button>
                         </form>
                     </div>
 
@@ -78,10 +85,21 @@
                     </small>
                     {% if user.is_authenticated %}
                     <div class="d-flex flex-column justify-content-evenly">
-                        <form action="{% url 'bidOnListing' id=Listing_id user_id=user.user_id %}" method="post">
+                        <form 
+                        style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        "
+                        action="{% url 'bidOnListing' id=Listing_id user_id=user.user_id %}" method="post">
                             {% csrf_token %}
+                            {% if Listing_status == 'Expired' %}
+                                {% for bid in bids %}
+
+                                {% endfor %}
+                            {% else %}
                             {{ BidForm }}
-                             <button class="btn btn-outline-primary text-primary"  type="submit">submit</button>
+                            <button class="btn btn-outline-primary text-primary"  type="submit">submit</button>
                         </form>
                     </div>
                         {% for bid in bids%}
@@ -101,6 +119,7 @@
                                  <button class="btn btn-outline-primary text-primary" type="submit">submit</button>
                             </form>
                         </div>
+                            {% endif %}
                         {% for comment in comments %}
                         <div class="d-flex flex-column justify-content-evenly">
                             <header>

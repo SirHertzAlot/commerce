@@ -9,7 +9,6 @@
       <a
         href="{% url 'returnCategory' category=category.listing_category %}"
         class="list-group-item list-group-item-action py-6 my-4 lh-sm"
-        aria-current="true"
       >
         <div
           class="d-flex flex-column w-100 align-items-center justify-space-evenly"
@@ -18,7 +17,7 @@
             style="width: 100%; justify-content: space-evenly"
             class="mb-1 py-2 d-flex flex-row justify-space-evenly"
           >
-            {{ category.Listing_category }}
+            {{ category.listing_category }}
           </strong>
         </div>
       </a>
@@ -41,40 +40,52 @@
           <div
             class="card card-cover overflow-hidden text-bg-dark rounded-4 shadow-lg"
             style="
-              background-image: '{{listing.listing_image}}';
+              background-image: url('{{MEDIA_URL}}{{listing.listing_image}}');
               width: 400px;
               height: 200px;
+              background-position: left; /* Center the image */
+              background-repeat: no-repeat; /* Do not repeat the image */
+              background-size: contain;
             "
           >
             <div
               class="d-flex flex-column p-1 text-shadow-1"
-              style="justify-content: space-between; height: 175px"
+              style="justify-content: space-around; align-items: center; height: inherit"
             >
-              <h3 class="m-2 display-6 lh-1 fw-bold">
-                <a href="{% url 'getListing' id=listing.listing_id %}">
-                  {{ listing.listing_name }}
-                </a>
-              </h3>
-              <div
-                style="justify-content: space-around; align-items: center"
-                class="d-flex flex-row"
+              <header
+                class="d-flex flex-column justify-space-evenly"
+                style="align-items: center;"
               >
+                <h3 class="m-2 display-6 lh-1 fw-bold">
+                  <a 
+                  style="text-decoration:none; color: white;"
+                  href="{% url 'getListing' id=listing.listing_id %}">
+                    {{ listing.listing_name }}
+                  </a>
+                </h3>
                 <ul class="d-flex list-unstyled">
                   <li class="d-flex align-items-center me-3">
                     <svg class="bi me-2" width="1em" height="1em">
                       <use xlink:href="#geo-fill"></use>
                     </svg>
-                    <small>{{ listing.listing_category | safe }}</small>
+                    <small
+                    style="font-weight: bolder;"
+                    >{{ listing.listing_category | safe }}</small>
                   </li>
                   <li class="d-flex align-items-center">
                     <svg class="bi me-2" width="1em" height="1em">
                       <use xlink:href="#calendar3"></use>
                     </svg>
-                    <small>{{ listing.listing_duration | safe }}</small>
+                    <small>{{ listing.listing_duration }}</small>
                   </li>
                 </ul>
+              </header>
+              <div
+                style="justify-content: space-around; align-items: center"
+                class="d-flex flex-column"
+              >
                 <form
-                  class="d-flex flex-row"
+                  class="d-flex flex-column"
                   style="width: fit-content"
                   method="POST"
                   action="{% url 'addToWatchList' id=listing.listing_id user_id=user_id  %}"
