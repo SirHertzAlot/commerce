@@ -3,7 +3,7 @@
   "summary": {
     "projectName": "git",
     "summaryUrl": ".boost\\git.summary.boost-notebook",
-    "filesToAnalyze": 53,
+    "filesToAnalyze": 100,
     "filesAnalyzed": 0,
     "issues": [
       "No summary file found at .boost\\git.summary.boost-notebook"
@@ -21,36 +21,423 @@
     }
   },
   "files": {
-    "README.md": {
-      "sourceRelFile": "README.md",
-      "notebookRelFile": ".boost/README.md.boost-notebook",
+    "static\\auctions\\styles.css": {
+      "sourceRelFile": "static\\auctions\\styles.css",
+      "notebookRelFile": ".boost/static/auctions/styles.css.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
       "issueCells": 0,
       "sections": {}
     },
-    "db.sqlite3": {
-      "sourceRelFile": "db.sqlite3",
-      "notebookRelFile": ".boost/db.sqlite3.boost-notebook",
+    "static\\admin\\css\\nav_sidebar.css": {
+      "sourceRelFile": "static\\admin\\css\\nav_sidebar.css",
+      "notebookRelFile": ".boost/static/admin/css/nav_sidebar.css.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
       "issueCells": 0,
       "sections": {}
     },
-    "manage.py": {
-      "sourceRelFile": "manage.py",
-      "notebookRelFile": ".boost/manage.py.boost-notebook",
+    "static\\admin\\js\\inlines.js": {
+      "sourceRelFile": "static\\admin\\js\\inlines.js",
+      "notebookRelFile": ".boost/static/admin/js/inlines.js.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
       "issueCells": 0,
       "sections": {}
     },
-    "db.sqbpro": {
-      "sourceRelFile": "db.sqbpro",
-      "notebookRelFile": ".boost/db.sqbpro.boost-notebook",
+    "static\\admin\\js\\filters.js": {
+      "sourceRelFile": "static\\admin\\js\\filters.js",
+      "notebookRelFile": ".boost/static/admin/js/filters.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\prepopulate_init.js": {
+      "sourceRelFile": "static\\admin\\js\\prepopulate_init.js",
+      "notebookRelFile": ".boost/static/admin/js/prepopulate_init.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\prepopulate.js": {
+      "sourceRelFile": "static\\admin\\js\\prepopulate.js",
+      "notebookRelFile": ".boost/static/admin/js/prepopulate.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\widgets.css": {
+      "sourceRelFile": "static\\admin\\css\\widgets.css",
+      "notebookRelFile": ".boost/static/admin/css/widgets.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\popup_response.js": {
+      "sourceRelFile": "static\\admin\\js\\popup_response.js",
+      "notebookRelFile": ".boost/static/admin/js/popup_response.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\img\\LICENSE": {
+      "sourceRelFile": "static\\admin\\img\\LICENSE",
+      "notebookRelFile": ".boost/static/admin/img/LICENSE.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\urlify.js": {
+      "sourceRelFile": "static\\admin\\js\\urlify.js",
+      "notebookRelFile": ".boost/static/admin/js/urlify.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\theme.js": {
+      "sourceRelFile": "static\\admin\\js\\theme.js",
+      "notebookRelFile": ".boost/static/admin/js/theme.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\SelectFilter2.js": {
+      "sourceRelFile": "static\\admin\\js\\SelectFilter2.js",
+      "notebookRelFile": ".boost/static/admin/js/SelectFilter2.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\SelectBox.js": {
+      "sourceRelFile": "static\\admin\\js\\SelectBox.js",
+      "notebookRelFile": ".boost/static/admin/js/SelectBox.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\img\\README.txt": {
+      "sourceRelFile": "static\\admin\\img\\README.txt",
+      "notebookRelFile": ".boost/static/admin/img/README.txt.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\nav_sidebar.js": {
+      "sourceRelFile": "static\\admin\\js\\nav_sidebar.js",
+      "notebookRelFile": ".boost/static/admin/js/nav_sidebar.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\jquery.init.js": {
+      "sourceRelFile": "static\\admin\\js\\jquery.init.js",
+      "notebookRelFile": ".boost/static/admin/js/jquery.init.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\rtl.css": {
+      "sourceRelFile": "static\\admin\\css\\rtl.css",
+      "notebookRelFile": ".boost/static/admin/css/rtl.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\responsive_rtl.css": {
+      "sourceRelFile": "static\\admin\\css\\responsive_rtl.css",
+      "notebookRelFile": ".boost/static/admin/css/responsive_rtl.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\responsive.css": {
+      "sourceRelFile": "static\\admin\\css\\responsive.css",
+      "notebookRelFile": ".boost/static/admin/css/responsive.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\core.js": {
+      "sourceRelFile": "static\\admin\\js\\core.js",
+      "notebookRelFile": ".boost/static/admin/js/core.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\login.css": {
+      "sourceRelFile": "static\\admin\\css\\login.css",
+      "notebookRelFile": ".boost/static/admin/css/login.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\collapse.js": {
+      "sourceRelFile": "static\\admin\\js\\collapse.js",
+      "notebookRelFile": ".boost/static/admin/js/collapse.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\change_form.js": {
+      "sourceRelFile": "static\\admin\\js\\change_form.js",
+      "notebookRelFile": ".boost/static/admin/js/change_form.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\cancel.js": {
+      "sourceRelFile": "static\\admin\\js\\cancel.js",
+      "notebookRelFile": ".boost/static/admin/js/cancel.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\calendar.js": {
+      "sourceRelFile": "static\\admin\\js\\calendar.js",
+      "notebookRelFile": ".boost/static/admin/js/calendar.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\autocomplete.js": {
+      "sourceRelFile": "static\\admin\\js\\autocomplete.js",
+      "notebookRelFile": ".boost/static/admin/js/autocomplete.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\vendor\\select2\\select2.css": {
+      "sourceRelFile": "static\\admin\\css\\vendor\\select2\\select2.css",
+      "notebookRelFile": ".boost/static/admin/css/vendor/select2/select2.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\vendor\\select2\\select2.min.css": {
+      "sourceRelFile": "static\\admin\\css\\vendor\\select2\\select2.min.css",
+      "notebookRelFile": ".boost/static/admin/css/vendor/select2/select2.min.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\admin\\RelatedObjectLookups.js": {
+      "sourceRelFile": "static\\admin\\js\\admin\\RelatedObjectLookups.js",
+      "notebookRelFile": ".boost/static/admin/js/admin/RelatedObjectLookups.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\admin\\DateTimeShortcuts.js": {
+      "sourceRelFile": "static\\admin\\js\\admin\\DateTimeShortcuts.js",
+      "notebookRelFile": ".boost/static/admin/js/admin/DateTimeShortcuts.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\actions.js": {
+      "sourceRelFile": "static\\admin\\js\\actions.js",
+      "notebookRelFile": ".boost/static/admin/js/actions.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\select2\\select2.full.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\select2\\select2.full.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/select2/select2.full.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\jquery\\LICENSE.txt": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\jquery\\LICENSE.txt",
+      "notebookRelFile": ".boost/static/admin/js/vendor/jquery/LICENSE.txt.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\jquery\\jquery.min.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\jquery\\jquery.min.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/jquery/jquery.min.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\select2\\LICENSE.md": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\select2\\LICENSE.md",
+      "notebookRelFile": ".boost/static/admin/js/vendor/select2/LICENSE.md.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\xregexp\\xregexp.min.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\xregexp\\xregexp.min.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/xregexp/xregexp.min.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\xregexp\\xregexp.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\xregexp\\xregexp.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/xregexp/xregexp.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\xregexp\\LICENSE.txt": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\xregexp\\LICENSE.txt",
+      "notebookRelFile": ".boost/static/admin/js/vendor/xregexp/LICENSE.txt.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\select2\\select2.full.min.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\select2\\select2.full.min.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/select2/select2.full.min.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\jquery\\jquery.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\jquery\\jquery.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/jquery/jquery.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\select2\\i18n\\zh-TW.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\select2\\i18n\\zh-TW.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/select2/i18n/zh-TW.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\select2\\i18n\\zh-CN.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\select2\\i18n\\zh-CN.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/select2/i18n/zh-CN.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\select2\\i18n\\vi.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\select2\\i18n\\vi.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/select2/i18n/vi.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\select2\\i18n\\uk.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\select2\\i18n\\uk.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/select2/i18n/uk.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\select2\\i18n\\tr.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\select2\\i18n\\tr.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/select2/i18n/tr.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\js\\vendor\\select2\\i18n\\tk.js": {
+      "sourceRelFile": "static\\admin\\js\\vendor\\select2\\i18n\\tk.js",
+      "notebookRelFile": ".boost/static/admin/js/vendor/select2/i18n/tk.js.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\vendor\\select2\\LICENSE-SELECT2.md": {
+      "sourceRelFile": "static\\admin\\css\\vendor\\select2\\LICENSE-SELECT2.md",
+      "notebookRelFile": ".boost/static/admin/css/vendor/select2/LICENSE-SELECT2.md.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
@@ -66,9 +453,9 @@
       "issueCells": 0,
       "sections": {}
     },
-    "SprintPlanningNotes.md": {
-      "sourceRelFile": "SprintPlanningNotes.md",
-      "notebookRelFile": ".boost/SprintPlanningNotes.md.boost-notebook",
+    ".trunk\\trunk.yaml": {
+      "sourceRelFile": ".trunk\\trunk.yaml",
+      "notebookRelFile": ".boost/.trunk/trunk.yaml.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
@@ -84,33 +471,6 @@
       "issueCells": 0,
       "sections": {}
     },
-    "requirements.txt": {
-      "sourceRelFile": "requirements.txt",
-      "notebookRelFile": ".boost/requirements.txt.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    ".trunk\\trunk.yaml": {
-      "sourceRelFile": ".trunk\\trunk.yaml",
-      "notebookRelFile": ".boost/.trunk/trunk.yaml.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "commerce\\wsgi.py": {
-      "sourceRelFile": "commerce\\wsgi.py",
-      "notebookRelFile": ".boost/commerce/wsgi.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
     ".github\\workflows\\django.yml": {
       "sourceRelFile": ".github\\workflows\\django.yml",
       "notebookRelFile": ".boost/.github/workflows/django.yml.boost-notebook",
@@ -120,45 +480,9 @@
       "issueCells": 0,
       "sections": {}
     },
-    "auctions\\forms.py": {
-      "sourceRelFile": "auctions\\forms.py",
-      "notebookRelFile": ".boost/auctions/forms.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "commerce\\urls.py": {
-      "sourceRelFile": "commerce\\urls.py",
-      "notebookRelFile": ".boost/commerce/urls.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\apps.py": {
-      "sourceRelFile": "auctions\\apps.py",
-      "notebookRelFile": ".boost/auctions/apps.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "commerce\\settings.py": {
-      "sourceRelFile": "commerce\\settings.py",
-      "notebookRelFile": ".boost/commerce/settings.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\admin.py": {
-      "sourceRelFile": "auctions\\admin.py",
-      "notebookRelFile": ".boost/auctions/admin.py.boost-notebook",
+    "commerce\\asgi.py": {
+      "sourceRelFile": "commerce\\asgi.py",
+      "notebookRelFile": ".boost/commerce/asgi.py.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
@@ -174,9 +498,36 @@
       "issueCells": 0,
       "sections": {}
     },
-    "commerce\\auctions\\models.py": {
-      "sourceRelFile": "commerce\\auctions\\models.py",
-      "notebookRelFile": ".boost/commerce/auctions/models.py.boost-notebook",
+    ".trunk\\configs\\ruff.toml": {
+      "sourceRelFile": ".trunk\\configs\\ruff.toml",
+      "notebookRelFile": ".boost/.trunk/configs/ruff.toml.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "requirements.txt": {
+      "sourceRelFile": "requirements.txt",
+      "notebookRelFile": ".boost/requirements.txt.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "README.md": {
+      "sourceRelFile": "README.md",
+      "notebookRelFile": ".boost/README.md.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    ".trunk\\configs\\.yamllint.yaml": {
+      "sourceRelFile": ".trunk\\configs\\.yamllint.yaml",
+      "notebookRelFile": ".boost/.trunk/configs/.yamllint.yaml.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
@@ -186,6 +537,159 @@
     ".trunk\\configs\\.markdownlint.yaml": {
       "sourceRelFile": ".trunk\\configs\\.markdownlint.yaml",
       "notebookRelFile": ".boost/.trunk/configs/.markdownlint.yaml.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "commerce\\__init__.py": {
+      "sourceRelFile": "commerce\\__init__.py",
+      "notebookRelFile": ".boost/commerce/__init__.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\apps.py": {
+      "sourceRelFile": "auctions\\apps.py",
+      "notebookRelFile": ".boost/auctions/apps.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\migrations\\0001_initial.py": {
+      "sourceRelFile": "auctions\\migrations\\0001_initial.py",
+      "notebookRelFile": ".boost/auctions/migrations/0001_initial.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\migrations\\0002_alter_listing_listing_end_time_and_more.py": {
+      "sourceRelFile": "auctions\\migrations\\0002_alter_listing_listing_end_time_and_more.py",
+      "notebookRelFile": ".boost/auctions/migrations/0002_alter_listing_listing_end_time_and_more.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\templates\\auctions\\createListing.html": {
+      "sourceRelFile": "auctions\\templates\\auctions\\createListing.html",
+      "notebookRelFile": ".boost/auctions/templates/auctions/createListing.html.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\migrations\\__init__.py": {
+      "sourceRelFile": "auctions\\migrations\\__init__.py",
+      "notebookRelFile": ".boost/auctions/migrations/__init__.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\templates\\auctions\\watchlist.html": {
+      "sourceRelFile": "auctions\\templates\\auctions\\watchlist.html",
+      "notebookRelFile": ".boost/auctions/templates/auctions/watchlist.html.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\templates\\auctions\\login.html": {
+      "sourceRelFile": "auctions\\templates\\auctions\\login.html",
+      "notebookRelFile": ".boost/auctions/templates/auctions/login.html.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\templates\\auctions\\layout.html": {
+      "sourceRelFile": "auctions\\templates\\auctions\\layout.html",
+      "notebookRelFile": ".boost/auctions/templates/auctions/layout.html.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\templates\\auctions\\index.html": {
+      "sourceRelFile": "auctions\\templates\\auctions\\index.html",
+      "notebookRelFile": ".boost/auctions/templates/auctions/index.html.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\templates\\auctions\\register.html": {
+      "sourceRelFile": "auctions\\templates\\auctions\\register.html",
+      "notebookRelFile": ".boost/auctions/templates/auctions/register.html.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\templates\\auctions\\getListing.html": {
+      "sourceRelFile": "auctions\\templates\\auctions\\getListing.html",
+      "notebookRelFile": ".boost/auctions/templates/auctions/getListing.html.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\migrations\\0005_listing_listing_winner_and_more.py": {
+      "sourceRelFile": "auctions\\migrations\\0005_listing_listing_winner_and_more.py",
+      "notebookRelFile": ".boost/auctions/migrations/0005_listing_listing_winner_and_more.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\migrations\\0004_alter_listing_listing_end_time_and_more.py": {
+      "sourceRelFile": "auctions\\migrations\\0004_alter_listing_listing_end_time_and_more.py",
+      "notebookRelFile": ".boost/auctions/migrations/0004_alter_listing_listing_end_time_and_more.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\migrations\\0003_alter_listing_listing_end_time_and_more.py": {
+      "sourceRelFile": "auctions\\migrations\\0003_alter_listing_listing_end_time_and_more.py",
+      "notebookRelFile": ".boost/auctions/migrations/0003_alter_listing_listing_end_time_and_more.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\__init__.py": {
+      "sourceRelFile": "auctions\\__init__.py",
+      "notebookRelFile": ".boost/auctions/__init__.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\views.py": {
+      "sourceRelFile": "auctions\\views.py",
+      "notebookRelFile": ".boost/auctions/views.py.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
@@ -219,180 +723,9 @@
       "issueCells": 0,
       "sections": {}
     },
-    "auctions\\migrations\\0002_listing_listing_status_and_more.py": {
-      "sourceRelFile": "auctions\\migrations\\0002_listing_listing_status_and_more.py",
-      "notebookRelFile": ".boost/auctions/migrations/0002_listing_listing_status_and_more.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\0004_listing_listing_endtime_and_more.py": {
-      "sourceRelFile": "auctions\\migrations\\0004_listing_listing_endtime_and_more.py",
-      "notebookRelFile": ".boost/auctions/migrations/0004_listing_listing_endtime_and_more.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\0003_alter_listing_listing_starttime_watchlist.py": {
-      "sourceRelFile": "auctions\\migrations\\0003_alter_listing_listing_starttime_watchlist.py",
-      "notebookRelFile": ".boost/auctions/migrations/0003_alter_listing_listing_starttime_watchlist.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\__init__.py": {
-      "sourceRelFile": "auctions\\__init__.py",
-      "notebookRelFile": ".boost/auctions/__init__.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\0001_initial.py": {
-      "sourceRelFile": "auctions\\migrations\\0001_initial.py",
-      "notebookRelFile": ".boost/auctions/migrations/0001_initial.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\views.py": {
-      "sourceRelFile": "auctions\\views.py",
-      "notebookRelFile": ".boost/auctions/views.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\templates\\auctions\\index.html": {
-      "sourceRelFile": "auctions\\templates\\auctions\\index.html",
-      "notebookRelFile": ".boost/auctions/templates/auctions/index.html.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\templates\\auctions\\getListing.html": {
-      "sourceRelFile": "auctions\\templates\\auctions\\getListing.html",
-      "notebookRelFile": ".boost/auctions/templates/auctions/getListing.html.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\templates\\auctions\\createListing.html": {
-      "sourceRelFile": "auctions\\templates\\auctions\\createListing.html",
-      "notebookRelFile": ".boost/auctions/templates/auctions/createListing.html.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    ".trunk\\configs\\.yamllint.yaml": {
-      "sourceRelFile": ".trunk\\configs\\.yamllint.yaml",
-      "notebookRelFile": ".boost/.trunk/configs/.yamllint.yaml.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\__init__.py": {
-      "sourceRelFile": "auctions\\migrations\\__init__.py",
-      "notebookRelFile": ".boost/auctions/migrations/__init__.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\0008_alter_bid_bid_amount_alter_listing_listing_endtime_and_more.py": {
-      "sourceRelFile": "auctions\\migrations\\0008_alter_bid_bid_amount_alter_listing_listing_endtime_and_more.py",
-      "notebookRelFile": ".boost/auctions/migrations/0008_alter_bid_bid_amount_alter_listing_listing_endtime_and_more.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\0007_alter_bid_bid_amount_alter_listing_listing_endtime_and_more.py": {
-      "sourceRelFile": "auctions\\migrations\\0007_alter_bid_bid_amount_alter_listing_listing_endtime_and_more.py",
-      "notebookRelFile": ".boost/auctions/migrations/0007_alter_bid_bid_amount_alter_listing_listing_endtime_and_more.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\0006_comments_comment_owner_id_listing_listing_image_and_more.py": {
-      "sourceRelFile": "auctions\\migrations\\0006_comments_comment_owner_id_listing_listing_image_and_more.py",
-      "notebookRelFile": ".boost/auctions/migrations/0006_comments_comment_owner_id_listing_listing_image_and_more.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\0005_rename_bid_amount_bid_bid_amount_and_more.py": {
-      "sourceRelFile": "auctions\\migrations\\0005_rename_bid_amount_bid_bid_amount_and_more.py",
-      "notebookRelFile": ".boost/auctions/migrations/0005_rename_bid_amount_bid_bid_amount_and_more.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\models.py": {
-      "sourceRelFile": "auctions\\models.py",
-      "notebookRelFile": ".boost/auctions/models.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    ".trunk\\configs\\ruff.toml": {
-      "sourceRelFile": ".trunk\\configs\\ruff.toml",
-      "notebookRelFile": ".boost/.trunk/configs/ruff.toml.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\templates\\auctions\\register.html": {
-      "sourceRelFile": "auctions\\templates\\auctions\\register.html",
-      "notebookRelFile": ".boost/auctions/templates/auctions/register.html.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\templates\\auctions\\login.html": {
-      "sourceRelFile": "auctions\\templates\\auctions\\login.html",
-      "notebookRelFile": ".boost/auctions/templates/auctions/login.html.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\templates\\auctions\\layout.html": {
-      "sourceRelFile": "auctions\\templates\\auctions\\layout.html",
-      "notebookRelFile": ".boost/auctions/templates/auctions/layout.html.boost-notebook",
+    "static\\admin\\css\\autocomplete.css": {
+      "sourceRelFile": "static\\admin\\css\\autocomplete.css",
+      "notebookRelFile": ".boost/static/admin/css/autocomplete.css.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
@@ -408,18 +741,72 @@
       "issueCells": 0,
       "sections": {}
     },
-    ".trunk\\configs\\.isort.cfg": {
-      "sourceRelFile": ".trunk\\configs\\.isort.cfg",
-      "notebookRelFile": ".boost/.trunk/configs/.isort.cfg.boost-notebook",
+    "static\\admin\\css\\forms.css": {
+      "sourceRelFile": "static\\admin\\css\\forms.css",
+      "notebookRelFile": ".boost/static/admin/css/forms.css.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
       "issueCells": 0,
       "sections": {}
     },
-    "commerce\\__init__.py": {
-      "sourceRelFile": "commerce\\__init__.py",
-      "notebookRelFile": ".boost/commerce/__init__.py.boost-notebook",
+    "static\\admin\\css\\dashboard.css": {
+      "sourceRelFile": "static\\admin\\css\\dashboard.css",
+      "notebookRelFile": ".boost/static/admin/css/dashboard.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\dark_mode.css": {
+      "sourceRelFile": "static\\admin\\css\\dark_mode.css",
+      "notebookRelFile": ".boost/static/admin/css/dark_mode.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\changelists.css": {
+      "sourceRelFile": "static\\admin\\css\\changelists.css",
+      "notebookRelFile": ".boost/static/admin/css/changelists.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "static\\admin\\css\\base.css": {
+      "sourceRelFile": "static\\admin\\css\\base.css",
+      "notebookRelFile": ".boost/static/admin/css/base.css.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\models.py": {
+      "sourceRelFile": "auctions\\models.py",
+      "notebookRelFile": ".boost/auctions/models.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\forms.py": {
+      "sourceRelFile": "auctions\\forms.py",
+      "notebookRelFile": ".boost/auctions/forms.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "auctions\\admin.py": {
+      "sourceRelFile": "auctions\\admin.py",
+      "notebookRelFile": ".boost/auctions/admin.py.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,
@@ -435,15 +822,6 @@
       "issueCells": 0,
       "sections": {}
     },
-    "commerce\\asgi.py": {
-      "sourceRelFile": "commerce\\asgi.py",
-      "notebookRelFile": ".boost/commerce/asgi.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
     "auctions\\abstractions.py": {
       "sourceRelFile": "auctions\\abstractions.py",
       "notebookRelFile": ".boost/auctions/abstractions.py.boost-notebook",
@@ -453,45 +831,90 @@
       "issueCells": 0,
       "sections": {}
     },
+    "SprintPlanningNotes.md": {
+      "sourceRelFile": "SprintPlanningNotes.md",
+      "notebookRelFile": ".boost/SprintPlanningNotes.md.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "commerce\\wsgi.py": {
+      "sourceRelFile": "commerce\\wsgi.py",
+      "notebookRelFile": ".boost/commerce/wsgi.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "commerce\\urls.py": {
+      "sourceRelFile": "commerce\\urls.py",
+      "notebookRelFile": ".boost/commerce/urls.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "manage.py": {
+      "sourceRelFile": "manage.py",
+      "notebookRelFile": ".boost/manage.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "commerce\\settings.py": {
+      "sourceRelFile": "commerce\\settings.py",
+      "notebookRelFile": ".boost/commerce/settings.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    ".trunk\\configs\\.isort.cfg": {
+      "sourceRelFile": ".trunk\\configs\\.isort.cfg",
+      "notebookRelFile": ".boost/.trunk/configs/.isort.cfg.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "db.sqlite3": {
+      "sourceRelFile": "db.sqlite3",
+      "notebookRelFile": ".boost/db.sqlite3.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "db.sqbpro": {
+      "sourceRelFile": "db.sqbpro",
+      "notebookRelFile": ".boost/db.sqbpro.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
+    "commerce\\auctions\\models.py": {
+      "sourceRelFile": "commerce\\auctions\\models.py",
+      "notebookRelFile": ".boost/commerce/auctions/models.py.boost-notebook",
+      "totalCells": 0,
+      "completedCells": 0,
+      "errorCells": 0,
+      "issueCells": 0,
+      "sections": {}
+    },
     "commerce\\auctions\\migrations\\__init__.py": {
       "sourceRelFile": "commerce\\auctions\\migrations\\__init__.py",
       "notebookRelFile": ".boost/commerce/auctions/migrations/__init__.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\templates\\auctions\\watchlist.html": {
-      "sourceRelFile": "auctions\\templates\\auctions\\watchlist.html",
-      "notebookRelFile": ".boost/auctions/templates/auctions/watchlist.html.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\0009_alter_listing_listing_endtime_and_more.py": {
-      "sourceRelFile": "auctions\\migrations\\0009_alter_listing_listing_endtime_and_more.py",
-      "notebookRelFile": ".boost/auctions/migrations/0009_alter_listing_listing_endtime_and_more.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\0011_alter_listing_listing_duration_and_more.py": {
-      "sourceRelFile": "auctions\\migrations\\0011_alter_listing_listing_duration_and_more.py",
-      "notebookRelFile": ".boost/auctions/migrations/0011_alter_listing_listing_duration_and_more.py.boost-notebook",
-      "totalCells": 0,
-      "completedCells": 0,
-      "errorCells": 0,
-      "issueCells": 0,
-      "sections": {}
-    },
-    "auctions\\migrations\\0010_alter_listing_listing_endtime_and_more.py": {
-      "sourceRelFile": "auctions\\migrations\\0010_alter_listing_listing_endtime_and_more.py",
-      "notebookRelFile": ".boost/auctions/migrations/0010_alter_listing_listing_endtime_and_more.py.boost-notebook",
       "totalCells": 0,
       "completedCells": 0,
       "errorCells": 0,

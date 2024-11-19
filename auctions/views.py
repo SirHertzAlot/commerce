@@ -4,20 +4,19 @@ from django.db import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from datetime import datetime as dt 
 
-from auctions.abstractions import postForm, returnBidResponse, returnGetListing
+from auctions.abstractions import postForm, returnBidResponse, returnGetListing, check_deadline
 from auctions.validators import validate_bid
 
 from .forms import BidForm, CommentForm, CreateListingForm, WatchlistForm
 from .models import Bid, Comments, Listing, User, Watchlist
-
 
 # Base route when you first login.
 @login_required(login_url='/login')
 def index(request):
     indexURI = "auctions/index.html"
     all_listings = Listing.objects.values().all()
-    print(all_listings)
     return render(
             request,
             indexURI,
@@ -103,7 +102,10 @@ def create_listing(request):
             {"createListingForm": CreateListingForm()},
         )
     if request.method == "POST":
+        duration = request.POST.get("listing_duration")
         form = CreateListingForm(request.POST, request.FILES)
+        str_dur = dt.fromisoformat(duration)
+        form.listing_duration = str_dur
         if form.is_valid():
             listing = form.save(commit=False)
             listing.listing_owner_id_id = request.user.user_id
@@ -189,6 +191,9 @@ def get_listing(request, id):
         if Listing_owner == request.user.user_id:
             is_owner = True
             error = None
+            if valuesDict['listing_status'] != 'Active':
+                valuesDict["listing_owner_id_id"] = bidsDict[0]['bid_user_id_id']
+            check_deadline(valuesDict)
             return returnGetListing(
                 request, valuesDict, is_owner, commentsDict, bidsDict, error
             )
@@ -200,7 +205,7 @@ def get_listing(request, id):
 
 # Close a listing post route.
 @login_required(login_url='/login')
-def close_listing(request):
+def close_listing(request, id):
     """
     Change the status of a listing to closed. :model:`auctions.Listing.listing_status` model.
 
@@ -216,7 +221,16 @@ def close_listing(request):
     **Input:**
     :input:`an ID`
     """
-    return postForm(request, "Listing")
+    valuesList = Listing.objects.filter(pk=id).values()
+    valuesDict = valuesList[0]
+
+    bidsDict = Bid.objects.filter(listing_id=id).order_by("-bid_amount").values()
+    winner = bidsDict[0]['bid_user_id_id']
+
+    
+    if valuesDict['listing_end_time'] >= dt.now():
+        valuesDict['listing_status'] = 'Expired'
+    return postForm(request, valuesDict, "Listing")
 
 # Add a listing to watchlist post route.
 @login_required(login_url='/login')
@@ -226,7 +240,6 @@ def add_to_watchlist(request, id, user_id):
         user = User.objects.get(user_id=user_id)
         listing = Listing.objects.get(listing_id=id)
         if form.is_valid():
-            print(form.cleaned_data)
             watchlistItem = Watchlist(
                 add_to_list=form.cleaned_data["add_to_list"],
                 user_id=user,

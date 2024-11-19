@@ -27,13 +27,13 @@
                 </div>
             </div>
             <div class="d-flex flex-column justify-content-around align-items-end" style="width: -webkit-fill-available;">
-                {% if now < Listing_endTime and Listing_status == 'Expired' %}
+                {% if Listing_status == 'Active' %}
                     <h3>Listing Duration</h3>
                     <time>{{ Listing_duration|date:"SHORT_DATETIME_FORMAT" }}</time>
                     <div class="d-flex flex-column justify-content-evenly">
                     <h3>Add to watchlist</h3>
                         <form
-                        action="{% url 'addToWatchList' id=Listing_id %}" method="post">
+                        action="{% url 'addToWatchList' id=Listing_id user_id=user%}" method="post">
                             {{ WatchlistForm }}
                         </form>
                     </div>
@@ -56,14 +56,15 @@
                         flex-direction: column;
                         align-items: center;
                         "
-                        action="{% url 'bidOnListing' id=Listing_id %}" method="post">
+                        action="{% url 'bidOnListing' id=Listing_id user_id=user.user_id %}" method="post">
+                        {% csrf_token %}
                             {{ BidForm }}
                             <button class="btn btn-outline-primary text-primary"  type="submit">submit</button>
                         </form>
                     </div>
 
                     {% if is_owner %}
-                    <form method="POST" action="{% url 'closeListing' %}">
+                    <form method="POST" action="{% url 'closeListing' id=Listing_id %}">
                         <div style="display:none;">{{ csrf_token }}</div>
                         <div class="d-flex flex-column">
                             {{ form }}
@@ -85,6 +86,16 @@
                     </small>
                     {% if user.is_authenticated %}
                     <div class="d-flex flex-column justify-content-evenly">
+                        {% if Listing_status == 'Expired' and now > Listing_endTime %}
+                                <div>
+                                    {% if Listing_winner is not None %}
+                                        <p>You win!</p>
+                                    {% else %}
+                                    {% endif %}
+                                </div>
+                                {% for bid in bids %}
+
+                                {% endfor %}
                         <form 
                         style="
                         display: flex;
@@ -93,15 +104,17 @@
                         "
                         action="{% url 'bidOnListing' id=Listing_id user_id=user.user_id %}" method="post">
                             {% csrf_token %}
-                            {% if Listing_status == 'Expired' %}
-                                {% for bid in bids %}
-
-                                {% endfor %}
-                            {% else %}
                             {{ BidForm }}
                             <button class="btn btn-outline-primary text-primary"  type="submit">submit</button>
                         </form>
+                        <form action="{% url 'createComment' id=Listing_id user_id=user.user_id %}" method="post">
+                            {% csrf_token %}
+                            {{ CommentForm }}
+                             <button class="btn btn-outline-primary text-primary" type="submit">submit</button>
+                        </form>
                     </div>
+                        {% else %}
+                            
                         {% for bid in bids%}
                                 <div class="d-flex flex-column justify-content-evenly">
                                     <header>
@@ -112,14 +125,7 @@
                                     </article>
                                 </div>
                         {% endfor %}
-                        <div class="d-flex flex-column justify-content-evenly">
-                            <form action="{% url 'createComment' id=Listing_id user_id=user.user_id %}" method="post">
-                                {% csrf_token %}
-                                {{ CommentForm }}
-                                 <button class="btn btn-outline-primary text-primary" type="submit">submit</button>
-                            </form>
-                        </div>
-                            {% endif %}
+                        {% endif %}
                         {% for comment in comments %}
                         <div class="d-flex flex-column justify-content-evenly">
                             <header>

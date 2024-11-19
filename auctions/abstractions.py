@@ -1,10 +1,25 @@
+from datetime import datetime
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
 from auctions.forms import BidForm, CommentForm, WatchlistForm
+from auctions.models import Bid, Listing
 
 listing_endpoint = "auctions/getListing.html"
+
+def check_deadline(data):
+    print("checking deadline now...")
+    now = datetime.now()
+    instance = data
+    end_timestamp = instance['listing_end_time'].timestamp()
+    now_timestamp = now.timestamp()
+    if end_timestamp < now_timestamp:
+        print("Closing active listing now...")
+        instance['listing_status'] = 'Expired'
+        winning_bid = Bid.objects.filter(listing_id=instance['listing_id']).order_by("-bid_amount").values()
+        print(winning_bid)
+        Listing.objects.filter(pk=instance['listing_id']).update(listing_status='Expired', listing_winner=winning_bid[0]['user_id_id'])
 
 def returnBidResponse(request, valuesDict, is_owner, commentsDict, bidsDict, error):
     """
@@ -26,6 +41,7 @@ def returnBidResponse(request, valuesDict, is_owner, commentsDict, bidsDict, err
                 "Listing_endTime": valuesDict.listing_end_time,
                 "Listing_duration": valuesDict.listing_duration,
                 "Listing_image": valuesDict.listing_image,
+                "Listing_winner": valuesDict.listing_winner,
                 "bids": bidsDict,
                 "comments": commentsDict,
                 "WatchlistForm": WatchlistForm(),
@@ -48,6 +64,7 @@ def returnBidResponse(request, valuesDict, is_owner, commentsDict, bidsDict, err
             "Listing_endTime": valuesDict.listing_end_time,
             "Listing_duration": valuesDict.listing_duration,
             "Listing_image": valuesDict.listing_image,
+            "Listing_winner": valuesDict.listing_winner,
             "bids": bidsDict,
             "comments": commentsDict,
             "WatchlistForm": WatchlistForm(),
@@ -61,10 +78,9 @@ def returnBidResponse(request, valuesDict, is_owner, commentsDict, bidsDict, err
 def returnGetListing(request, valuesDict, is_owner, commentsDict, bidsDict, error):
     """
     Return a listing using the listing's ID to retrieve it's value.
-    This function expects a dictionary of values (Which is the default return value from SQL for retrieving a single listing.), and a boolean value for is_owner.
+    This function expects a dictionary of values (Which is the default return value from SQLite3 for retrieving a single listing.), and a boolean value for is_owner.
     :model:`auctions.models.Listing`.
     """
-    print(valuesDict)
     if error:
         return render(
             request,
@@ -79,6 +95,7 @@ def returnGetListing(request, valuesDict, is_owner, commentsDict, bidsDict, erro
                 "Listing_endTime": valuesDict["listing_end_time"],
                 "Listing_duration": valuesDict["listing_duration"],
                 "Listing_image": valuesDict["listing_image"],
+                "Listing_winner": valuesDict["listing_winner"],
                 "bids": bidsDict,
                 "comments": commentsDict,
                 "WatchlistForm": WatchlistForm(),
@@ -101,6 +118,7 @@ def returnGetListing(request, valuesDict, is_owner, commentsDict, bidsDict, erro
             "Listing_endTime": valuesDict["listing_end_time"],
             "Listing_duration": valuesDict["listing_duration"],
             "Listing_image": valuesDict["listing_image"],
+            "Listing_winner": valuesDict["listing_winner"],
             "bids": bidsDict,
             "comments": commentsDict,
             "WatchlistForm": WatchlistForm(),

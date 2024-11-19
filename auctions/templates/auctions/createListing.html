@@ -4,7 +4,10 @@
         <ul style="list-style: none; height: inherit;" class="d-flex flex-column justify-content-evenly">
           {% csrf_token %}
           {{ createListingForm.as_ul }}
+          <label for="listing_duration">Listing Duration</label>
+          <input type="datetime-local" name="listing_duration">
         </ul>
+        
       <button class="w-auto h-auto" type="submit">Create Listing</button>
     </form>
 </div>

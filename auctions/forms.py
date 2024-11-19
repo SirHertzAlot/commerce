@@ -19,12 +19,11 @@ class StatusForm(forms.ModelForm):
 class CreateListingForm(forms.ModelForm):
     class Meta:
         model = Listing
-        fields = ('listing_name','listing_category','listing_description','listing_duration','listing_end_time','listing_image')
+        fields = ('listing_name','listing_category','listing_description','listing_end_time','listing_image')
         labels = {
             'listing_name': 'Listing Name',
             'listing_category': 'Listing Category',
             'listing_description':'Listing Description',
-            'listing_duration': 'Listing Duration',
             'listing_end_time': 'Listing End Time',
             'listing_image': 'Listing Image'
         }
@@ -32,7 +31,6 @@ class CreateListingForm(forms.ModelForm):
             'listing_name': forms.TextInput(attrs={'placeholder':'Enter the products name.'}),
             'listing_category': forms.TextInput(attrs={'placeholder':'Enter the products description.'}),
             'listing_description': forms.TextInput(attrs={'placeholder':'Enter a description for your product.'}),
-            'listing_duration': forms.TimeInput(attrs={'placeholder':''}),
             'listing_end_time': forms.DateTimeInput(attrs={'placeholder':''}),
         }
 
